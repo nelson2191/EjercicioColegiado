@@ -24,7 +24,7 @@ public class EjercicioColegiado {
          opc=Byte.parseByte(JOptionPane.showInputDialog(null,
                  "***MENÚ PRINCIPAL***\n\n"
                          + "1.Agregar Estudiante\n"
-                         + "2.Mostrar Estudiante\n"
+                         + "2.Mostrar notas y Resultados\n"
                          + "3.Salir\n"
                          + "Digite su opción:"));
          switch(opc){
@@ -35,7 +35,7 @@ public class EjercicioColegiado {
              } 
              case 2:{
                mostrarNotas(); 
-               
+               mostrarResultados();
               
                 break;
              }
@@ -52,12 +52,12 @@ public class EjercicioColegiado {
             
         }
     
-        private static Estudiantes ArrayEstudiantes[] = new Estudiantes[11];
+        private static Estudiantes ArrayEstudiantes[] = new Estudiantes[3];
         
         public static void agregarEstudiantes(){
-        Estudiantes ArrayEstudiantes[] = new Estudiantes[10];
+    
         
-            for (int x = 0; x < 10; x++) {
+            for (int x = 0; x < 3; x++) {
                 Estudiantes estudiante = new Estudiantes();
                 estudiante.setNombre(JOptionPane.showInputDialog(null, "Digite el nombre del estudiante:"));
                 estudiante.setCurso(JOptionPane.showInputDialog(null, "Digite el nombre del curso:"));
@@ -69,18 +69,18 @@ public class EjercicioColegiado {
         }
         
         public static void mostrarNotas() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
                 JOptionPane.showMessageDialog(null, ArrayEstudiantes[i].getNombre() + " " + ArrayEstudiantes[i].getCurso() + " " + ArrayEstudiantes[i].getProfesor()+" " + ArrayEstudiantes[i].getCalificacion());
             }
     }
         
-        public void mostrarResultados() {
+        public static void mostrarResultados() {
         double acumuladorNotas = 0;
         double promedioNotas=0;
         double notaMayor=0;
         double notaMenor=100;
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             acumuladorNotas = acumuladorNotas + ArrayEstudiantes[i].getCalificacion();
             promedioNotas=acumuladorNotas/10;
             if (ArrayEstudiantes[i].getCalificacion() < notaMayor) {
@@ -89,8 +89,11 @@ public class EjercicioColegiado {
             if (ArrayEstudiantes[i].getCalificacion() > notaMenor) {
                     notaMenor=ArrayEstudiantes[i].getCalificacion();
         }
+            
         JOptionPane.showMessageDialog(null, "La suma total de las notas es:" + acumuladorNotas);
         JOptionPane.showMessageDialog(null, "El promedio total de las notas es:" + promedioNotas);
+        JOptionPane.showMessageDialog(null, "El promedio total de las notas es:" + notaMayor);
+        JOptionPane.showMessageDialog(null, "El promedio total de las notas es:" + notaMenor);
         
     }
         
