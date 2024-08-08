@@ -52,12 +52,12 @@ public class EjercicioColegiado {
             
         }
     
-        private static Estudiantes ArrayEstudiantes[] = new Estudiantes[3];
+        private static Estudiantes ArrayEstudiantes[] = new Estudiantes[10];
         
         public static void agregarEstudiantes(){
     
         
-            for (int x = 0; x < 3; x++) {
+            for (int x = 0; x < 10; x++) {
                 Estudiantes estudiante = new Estudiantes();
                 estudiante.setNombre(JOptionPane.showInputDialog(null, "Digite el nombre del estudiante:"));
                 estudiante.setCurso(JOptionPane.showInputDialog(null, "Digite el nombre del curso:"));
@@ -69,7 +69,7 @@ public class EjercicioColegiado {
         }
         
         public static void mostrarNotas() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
                 JOptionPane.showMessageDialog(null, ArrayEstudiantes[i].getNombre() + " " + ArrayEstudiantes[i].getCurso() + " " + ArrayEstudiantes[i].getProfesor()+" " + ArrayEstudiantes[i].getCalificacion());
             }
     }
@@ -81,26 +81,33 @@ public class EjercicioColegiado {
         String estudianteNotaMayor="";
         double notaMenor=100;
         String estudianteNotaMenor="";
+        int cantidadMayorPromedio=0;
+        int cantidadMenorPromedio=0;
         
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             acumuladorNotas = acumuladorNotas + ArrayEstudiantes[i].getCalificacion();
             promedioNotas=acumuladorNotas/10;
-            if (ArrayEstudiantes[i].getCalificacion() < notaMayor) {
+            if (ArrayEstudiantes[i].getCalificacion() > notaMayor) {
                     notaMayor=ArrayEstudiantes[i].getCalificacion();
                     
-        }
-            if (ArrayEstudiantes[i].getCalificacion() > notaMenor) {
+            }
+            if (ArrayEstudiantes[i].getCalificacion() < notaMenor) {
                     notaMenor=ArrayEstudiantes[i].getCalificacion();
                     
-        }
+            }
             
+            if (ArrayEstudiantes[i].getCalificacion() < promedioNotas) {
+                    cantidadMayorPromedio=cantidadMayorPromedio+1;
+                    
+            }
+            cantidadMenorPromedio=10-cantidadMayorPromedio;
+        }
         JOptionPane.showMessageDialog(null, "La suma total de las notas es:" + acumuladorNotas);
         JOptionPane.showMessageDialog(null, "El promedio total de las notas es:" + promedioNotas);
         JOptionPane.showMessageDialog(null, "La nota mayor es:" + notaMayor);
         JOptionPane.showMessageDialog(null, "La nota menor es:" + notaMenor);
-        
-    }
-        
+        JOptionPane.showMessageDialog(null, "Cantidad de estudiantes con una nota mayor al promedio es:" + cantidadMayorPromedio);
+        JOptionPane.showMessageDialog(null, "Cantidad de estudiantes con una nota mayor al promedio es:" + cantidadMenorPromedio);
 }
         
 }
