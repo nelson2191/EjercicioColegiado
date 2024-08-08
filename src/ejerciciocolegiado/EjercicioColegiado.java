@@ -78,22 +78,26 @@ public class EjercicioColegiado {
         double acumuladorNotas = 0;
         double promedioNotas=0;
         double notaMayor=0;
+        String estudianteNotaMayor="";
         double notaMenor=100;
+        String estudianteNotaMenor="";
         
         for (int i = 0; i < 3; i++) {
             acumuladorNotas = acumuladorNotas + ArrayEstudiantes[i].getCalificacion();
             promedioNotas=acumuladorNotas/10;
             if (ArrayEstudiantes[i].getCalificacion() < notaMayor) {
                     notaMayor=ArrayEstudiantes[i].getCalificacion();
+                    
         }
             if (ArrayEstudiantes[i].getCalificacion() > notaMenor) {
                     notaMenor=ArrayEstudiantes[i].getCalificacion();
+                    
         }
             
         JOptionPane.showMessageDialog(null, "La suma total de las notas es:" + acumuladorNotas);
         JOptionPane.showMessageDialog(null, "El promedio total de las notas es:" + promedioNotas);
-        JOptionPane.showMessageDialog(null, "El promedio total de las notas es:" + notaMayor);
-        JOptionPane.showMessageDialog(null, "El promedio total de las notas es:" + notaMenor);
+        JOptionPane.showMessageDialog(null, "La nota mayor es:" + notaMayor);
+        JOptionPane.showMessageDialog(null, "La nota menor es:" + notaMenor);
         
     }
         
